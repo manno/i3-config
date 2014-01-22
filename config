@@ -173,49 +173,51 @@ exec --no-startup-id nitrogen --save --set-zoom-fill ~/.local/share/wallpaper.pn
 exec --no-startup-id nm-applet
 
 # Touchpad disable, in absence of g-s
-exec ~/bin/lenovo_xinput.sh
+exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
+exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
 
-# sounds nice?
+# press same key again to return to previous workspace
 workspace_auto_back_and_forth yes
 
 # multiple displays save xrandr right-of state
-exec xrandr --output LVDS1 --right-of VGA1 
+exec --no-startup-id xrandr --output LVDS1 --right-of VGA1 
 
 # notification? notify-send / osd?
-exec dunst
+exec --no-startup-id dunst
 
 # screenshot key
 bindsym Print exec gnome-screenshot
 
 # gnome?
 # http://blog.seventhmoon.info/i3-tiled-window-manager/
-exec echo ".i3/config: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"  
-
-# TODO gnome-keyring / SSH Agent?
+#exec echo ".i3/config: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"  
+#
+# gnome-keyring / SSH Agent?
 # eval `/usr/bin/gnome-keyring-daemon -s`
 # export SSH_AUTH_SOCK
 # export GPG_AGENT_INFO
-
+#
 # TODO volume indicator (bar?)
-
+#
 # TODO gnome power? instead of bar
-
+#
 # auto mounting / crypto - start nautilus instead
 #exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
-
+#
 # TODO calendar display?
-
+#
 # TODO GTK2/3 settings / icons
-
+#
 # TODO tango colors?
 #client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
 #client.focused_inactive #333333 #5F676A #ffffff #484e50
 #client.unfocused        #333333 #424242 #888888 #292d2e
 #client.urgent           #C10004 #900000 #ffffff #900000
-
+#
 # compmgr?
 #exec xcompmgr
-
+#
 #
 # Depends: libpulse-dev ponymix nitrogen
 #
