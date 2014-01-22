@@ -35,7 +35,7 @@ class i3_exit:
     def suspend_action(self,btn):
         self.disable_buttons()
         self.status.set_label("Suspending, please standby...")
-        os.system("i3-lock")
+        os.system("i3lock -ti ~/.local/share/wallpaper.png")
         os.system("dbus-send --system --print-reply \
                 --dest=\"org.freedesktop.UPower\"   \
                 /org/freedesktop/UPower             \

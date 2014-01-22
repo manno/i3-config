@@ -99,6 +99,10 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# move workspace to other monitor
+bindsym $mod+z move workspace to output left
+bindsym $mod+x move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -196,7 +200,7 @@ exec echo ".i3/config: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering w
 
 # TODO gnome power? instead of bar
 
-# TODO auto mounting / crypto
+# auto mounting / crypto - start nautilus instead
 #exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
 
 # TODO calendar display?
