@@ -4,7 +4,7 @@ Disclaimer.
 
 ## Installation
 
-    apt-get install libpulse-dev nitrogen
+    apt-get install libpulse-dev nitrogen i3 i3lock i3status
 
 ### Wallpaper    
 
@@ -14,17 +14,13 @@ Expected at `~/.local/share/wallpaper.png`.
 
 https://github.com/falconindy/ponymix
 
-### Keyring
+### Gnome Keyring
 
 Add to `.profile`
 
     eval `/usr/bin/gnome-keyring-daemon -s`
     export SSH_AUTH_SOCK
     export GPG_AGENT_INFO
-
-### Compose Key
-
-    setxkbmap -option compose:caps
 
 ### GTK Settings    
 
