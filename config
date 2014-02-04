@@ -76,7 +76,7 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
-bindsym $mod+1 workspace 1 
+bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
 bindsym $mod+4 workspace 4
@@ -185,7 +185,7 @@ exec_always --no-startup-id setxkbmap -option compose:caps
 workspace_auto_back_and_forth yes
 
 # multiple displays save xrandr right-of state
-exec_always --no-startup-id xrandr --output LVDS1 --right-of VGA1 
+exec_always --no-startup-id ~/.i3/i3xrandr
 
 # notification? notify-send / osd?
 exec --no-startup-id dunst
