@@ -21,3 +21,7 @@ Add to `.profile`
     eval `/usr/bin/gnome-keyring-daemon -s`
     export SSH_AUTH_SOCK
     export GPG_AGENT_INFO
+
+### Compose Key
+
+    setxkbmap -option compose:caps

@@ -167,21 +167,25 @@ exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
 bindsym $mod+l exec i3lock -ti ~/.local/share/wallpaper.png
 
 # set background image
-exec --no-startup-id nitrogen --save --set-zoom-fill ~/.local/share/wallpaper.png
+exec_always --no-startup-id nitrogen --save --set-zoom-fill ~/.local/share/wallpaper.png
 
 # Network Manager
 exec --no-startup-id nm-applet
 
 # Touchpad disable, in absence of g-s
-exec --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
-exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
-exec --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
+exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
+exec_always --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
+exec_always --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
+
+# Compose key, needs to be applied to every new keyboard
+exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+exec_always --no-startup-id setxkbmap -option compose:caps
 
 # press same key again to return to previous workspace
 workspace_auto_back_and_forth yes
 
 # multiple displays save xrandr right-of state
-exec --no-startup-id xrandr --output LVDS1 --right-of VGA1 
+exec_always --no-startup-id xrandr --output LVDS1 --right-of VGA1 
 
 # notification? notify-send / osd?
 exec --no-startup-id dunst
