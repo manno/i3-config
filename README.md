@@ -4,7 +4,7 @@ Disclaimer.
 
 ## Installation
 
-    apt-get install libpulse-dev nitrogen i3 i3lock i3status
+    apt-get install libpulse-dev nitrogen i3 i3lock i3status gmrun synapse
 
 ### Wallpaper    
 
