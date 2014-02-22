@@ -15,7 +15,23 @@ Expected at `~/.local/share/wallpaper.png`.
 
 ### Volume Control
 
+#### ponymix
+
 https://github.com/falconindy/ponymix
+
+#### pactl
+
+    apt-get install pulseaudio-utils
+
+
+#### pa-applet
+
+    apt-get install libglib2.0-dev libgtk-3-dev \
+      libnotify-dev libpulse-dev libx11-dev \
+      autoconf automake pkg-config
+
+      
+    git clone https://github.com/fernandotcl/pa-applet.git 
 
 ### Gnome Keyring
 
