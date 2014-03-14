@@ -105,6 +105,8 @@ for_window [class="X2goclient" instance="x2goclient"] floating enable
 for_window [class="Meld"] fullscreen
 for_window [class="Gitk"] fullscreen
 for_window [class="MPlayer"] floating enable
+for_window [class="Tomboy"] floating enable
+for_window [class="Evince"] floating enable
 
 # press same key again to return to previous workspace
 workspace_auto_back_and_forth yes
@@ -177,10 +179,10 @@ bindsym XF86AudioLowerVolume exec "ponymix decrease 5; notify-send 'Volume' `pon
 bindsym XF86AudioMute exec "ponymix toggle; notify-send 'Volume' `ponymix is-muted`"
 
 # volume indicator / mousewheel
-exec --no-startup /usr/local/bin/pa-applet
+exec --no-startup-id /opt/pa-applet/bin/pa-applet
 
 # set automatic locking
-exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
+#exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
 
 # lock
 bindsym $mod+l exec i3lock -ti ~/.local/share/wallpaper.png
@@ -208,7 +210,7 @@ exec_always --no-startup-id ~/.i3/i3xrandr
 exec_always --no-startup-id /usr/lib/notification-daemon/notification-daemon
 
 # start applications
-bindsym $mod+d exec --no-startup-id synapse
+bindsym $mod+d exec --no-startup-id /opt/synapse/bin/synapse
 
 # run commands
 bindsym $alt+F2 exec --no-startup-id gmrun
