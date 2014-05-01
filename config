@@ -187,13 +187,13 @@ bindsym $alt+Tab workspace next
 bindsym $mod+Tab workspace next
 
 # control Volume with Volume Keys
-# TODO remove ponymix?
 #bindsym $alt+Up exec "pactl set-sink-volume 1 -- +10%; notify-send 'Volume Up' ''"
 #bindsym $alt+Down exec "pactl set-sink-volume 1 -- -10%; notify-send 'Volume Down' ''"
 #bindsym $alt+Left exec "pactl set-sink-mute 1 -- toggle; notify-send 'Volume Toggle' ''"
-bindsym XF86AudioRaiseVolume exec "ponymix increase 5; notify-send 'Volume' `ponymix get-volume`"
-bindsym XF86AudioLowerVolume exec "ponymix decrease 5; notify-send 'Volume' `ponymix get-volume`"
-bindsym XF86AudioMute exec "ponymix toggle; notify-send 'Volume' `ponymix is-muted`"
+#bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 -- +10%; notify-send 'Volume' `~/.i3/volume-info.sh`"
+#bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -10%; notify-send 'Volume' `~/.i3/volume-info.sh`"
+#bindsym XF86AudioMute        exec "pactl set-sink-mute 0 -- toggle; notify-send 'Volume' `~/.i3/volume-info.sh`"
+bindsym XF86AudioMicMute     exec "pactl set-sink-mute 0 -- toggle; notify-send 'Volume' `~/.i3/volume-info.sh`"
 
 # volume indicator / mousewheel
 exec --no-startup-id /opt/pa-applet/bin/pa-applet
