@@ -1,0 +1,3 @@
+include ".gtkrc-2.0-gnome-color-chooser"
+gtk-theme-name = "Clearlooks"
+gtk-font-name = "Sans 8"
