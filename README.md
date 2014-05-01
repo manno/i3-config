@@ -9,6 +9,10 @@ Disclaimer.
       nitrogen xautolock \
       gmrun synapse notification-daemon 
 
+### Synapse
+
+    apt-get install apt-get install libgee-0.8-dev libunique-3.0-dev libkeybinder-3.0-dev libjson-glib-dev libgee-dev libzeitgeist-dev valac        
+
 ### Wallpaper    
 
 Expected at `~/.local/share/wallpaper.png`.

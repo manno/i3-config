@@ -19,7 +19,13 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
 # chose a FreeType font, such as:
-font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono 9
+
+# class                 border  backgr. text    indicator
+client.focused          #bcbcbc #0087af #ffffff #ff00ff
+client.focused_inactive #bcbcbc #a8a8a8 #2a2a2a #ff5f5f
+client.unfocused        #bcbcbc #d0d0d0 #3a3a3a #ff5f5f
+client.urgent           #ff00ff #ff00ff #ffffff #bcbcbc
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -44,9 +50,11 @@ bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
+#bindsym $mod+% split h
 
 # split in vertical orientation
 bindsym $mod+v split v
+#bindsym $mod+" split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -95,18 +103,27 @@ bindsym $mod+Shift+0 move container to workspace 10: video
 # app specific settings
 assign [class="Firefox"] → 2: Firefox
 assign [class="Google-chrome-stable"] → 3: Chrome
-assign [class="Evolution"] → 6: Evolution
+assign [class="Gitk"] → 5
+assign [class="Evolution"] → 6: Pidgin
 assign [class="Keepassx"] → 7: Pass
 assign [class="X2GoAgent"] → 8: X2Go
 #assign [class="MPlayer"] → 10: video
+assign [class="Tomboy"] → 6: Pidgin
+assign [class="Pidgin"] → 6: Pidgin
 
 for_window [class="Gmrun" instance="gmrun"] floating enable
 for_window [class="X2goclient" instance="x2goclient"] floating enable
 for_window [class="Meld"] fullscreen
 for_window [class="Gitk"] fullscreen
+for_window [class="Gitg"] fullscreen
 for_window [class="MPlayer"] floating enable
 for_window [class="Tomboy"] floating enable
 for_window [class="Evince"] floating enable
+for_window [class="TeamViewer.exe"] floating enable
+for_window [title="TeamViewer"] floating enable
+for_window [title="Steam - Update News"] floating enable
+for_window [class="Wine"] floating enable
+#for_window [class="Pidgin"] floating enable
 
 # press same key again to return to previous workspace
 workspace_auto_back_and_forth yes
@@ -191,7 +208,7 @@ bindsym $mod+l exec i3lock -ti ~/.local/share/wallpaper.png
 exec_always --no-startup-id nitrogen --save --set-zoom-fill ~/.local/share/wallpaper.png
 
 # Network Manager
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 
 # Touchpad disable, in absence of g-s
 exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
@@ -201,13 +218,14 @@ exec_always --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel
 # Compose key, needs to be applied to every new keyboard
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 exec_always --no-startup-id setxkbmap -option compose:caps
+exec_always --no-startup-id setxkbmap -option compose:rctrl
 
 # multiple displays save xrandr right-of state
 exec_always --no-startup-id ~/.i3/i3xrandr
 
 # notification-daemon
 #exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/notify-osd
-exec_always --no-startup-id /usr/lib/notification-daemon/notification-daemon
+#exec_always --no-startup-id /usr/lib/notification-daemon/notification-daemon
 
 # start applications
 bindsym $mod+d exec --no-startup-id /opt/synapse/bin/synapse
