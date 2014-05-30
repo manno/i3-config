@@ -63,6 +63,7 @@ bindsym $mod+f fullscreen
 #bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+bindsym $mod+s floating toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -116,13 +117,17 @@ for_window [class="X2goclient" instance="x2goclient"] floating enable
 for_window [class="Meld"] fullscreen
 for_window [class="Gitk"] fullscreen
 for_window [class="Gitg"] fullscreen
+for_window [class="Spotify"] fullscreen
 for_window [class="MPlayer"] floating enable
 for_window [class="Tomboy"] floating enable
+for_window [class="Eog"] floating enable
 for_window [class="Evince"] floating enable
 for_window [class="TeamViewer.exe"] floating enable
 for_window [title="TeamViewer"] floating enable
 for_window [title="Steam - Update News"] floating enable
 for_window [class="Wine"] floating enable
+for_window [class="Signon-ui"] floating enable
+for_window [class="Nm-applet"] floating enable
 #for_window [class="Pidgin"] floating enable
 
 # press same key again to return to previous workspace
@@ -197,12 +202,16 @@ bindsym XF86AudioMicMute     exec "pactl set-sink-mute 0 -- toggle; notify-send 
 
 # volume indicator / mousewheel
 exec --no-startup-id /opt/pa-applet/bin/pa-applet
+exec --no-startup-id tomboy
+exec --no-startup-id ~/.i3/bin/pidgin
 
 # set automatic locking
 #exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
 
 # lock
-bindsym $mod+l exec i3lock -ti ~/.local/share/wallpaper.png
+#bindsym $alt+Control+l exec i3lock -ti ~/.local/share/wallpaper.png
+#bindsym $mod+l exec i3lock -ti ~/.local/share/wallpaper.png
+bindsym $alt+Control+l exec gnome-screensaver-command -l
 
 # set background image
 exec_always --no-startup-id nitrogen --save --set-zoom-fill ~/.local/share/wallpaper.png
@@ -216,9 +225,7 @@ exec_always --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel
 exec_always --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
 
 # Compose key, needs to be applied to every new keyboard
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
-exec_always --no-startup-id setxkbmap -option compose:caps
-exec_always --no-startup-id setxkbmap -option compose:rctrl
+exec_always --no-startup-id ~/.i3/i3keymap
 
 # multiple displays save xrandr right-of state
 exec_always --no-startup-id ~/.i3/i3xrandr
