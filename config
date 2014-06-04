@@ -176,10 +176,10 @@ bar {
 }
 
 # shutdown/suspend button?
-bindsym $mod+Pause exec ~/.i3/i3exit.py
+bindsym $mod+Delete exec ~/.i3/bin/i3exit.py
 
 # reset xrandr displays
-bindsym $mod+F12 exec ~/.i3/i3xrandr
+bindsym $mod+F12 exec ~/.i3/bin/i3xrandr
 
 # screenshot key
 bindsym Print exec gnome-screenshot
@@ -220,15 +220,13 @@ exec_always --no-startup-id nitrogen --save --set-zoom-fill ~/.local/share/wallp
 #exec --no-startup-id nm-applet
 
 # Touchpad disable, in absence of g-s
-exec_always --no-startup-id xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0
-exec_always --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1
-exec_always --no-startup-id xinput set-prop "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Button" 2
+exec_always --no-startup-id ~/.i3/bin/xinput-tp.sh
 
 # Compose key, needs to be applied to every new keyboard
-exec_always --no-startup-id ~/.i3/i3keymap
+exec_always --no-startup-id ~/.i3/bin/i3keymap
 
 # multiple displays save xrandr right-of state
-exec_always --no-startup-id ~/.i3/i3xrandr
+#exec_always --no-startup-id ~/.i3/bin/i3xrandr
 
 # notification-daemon
 #exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/notify-osd
