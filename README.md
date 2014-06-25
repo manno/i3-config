@@ -6,7 +6,6 @@ Disclaimer.
 
     apt-get install i3 i3lock i3status \
       libpulse-dev \
-      nitrogen xautolock \
       gmrun synapse notification-daemon 
 
 ### Synapse

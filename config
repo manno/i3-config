@@ -9,8 +9,10 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
-set $alt Mod1
+# ------------------------------------------------------------------------------
+#
+# THEME
+#
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -26,6 +28,25 @@ client.focused          #bcbcbc #0087af #ffffff #ff00ff
 client.focused_inactive #bcbcbc #a8a8a8 #2a2a2a #ff5f5f
 client.unfocused        #bcbcbc #d0d0d0 #3a3a3a #ff5f5f
 client.urgent           #ff00ff #ff00ff #ffffff #bcbcbc
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3status -c ~/.i3/i3status.conf
+        colors {
+            background #232323
+            statusline #DCDCDC
+        }
+}
+
+# ------------------------------------------------------------------------------
+#
+# KEYS
+#
+
+# Modifier keys
+set $mod Mod4
+set $alt Mod1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -77,40 +98,111 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# move workspace to other monitor
+bindsym $mod+z move workspace to output left
+bindsym $mod+x move workspace to output right
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize mode
+bindsym $mod+r mode "resize"
+
+# bind alt-grave (prev) and alt-tab (overview?) to something?
+# https://wiki.archlinux.org/index.php/i3#Quickly_jumping_to_open_window
+bindsym $alt+grave workspace prev
+bindsym $mod+grave workspace prev
+bindsym $alt+Tab workspace next
+bindsym $mod+Tab workspace next
+
 # switch to workspace
 bindsym $mod+1 workspace 1: Term
 bindsym $mod+2 workspace 2: Firefox
 bindsym $mod+3 workspace 3: Chrome
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6: Evolution
-bindsym $mod+7 workspace 7: Pass
-bindsym $mod+8 workspace 8: X2Go
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10: video
+bindsym $mod+4 workspace 4:
+bindsym $mod+5 workspace 5:
+bindsym $mod+6 workspace 6:
+bindsym $mod+7 workspace 7:
+bindsym $mod+8 workspace 8:
+bindsym $mod+9 workspace 9: Pass
+bindsym $mod+0 workspace 10: Video
+bindsym $mod+F1 workspace F1:
+bindsym $mod+F2 workspace F2:
+bindsym $mod+F3 workspace F3:
+bindsym $mod+F4 workspace F4:
+bindsym $mod+F5 workspace F5:
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1: Term
 bindsym $mod+Shift+2 move container to workspace 2: Firefox
 bindsym $mod+Shift+3 move container to workspace 3: Chrome
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6: Evolution
-bindsym $mod+Shift+7 move container to workspace 7: Pass
-bindsym $mod+Shift+8 move container to workspace 8: X2Go
-bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+4 move container to workspace 4:
+bindsym $mod+Shift+5 move container to workspace 5:
+bindsym $mod+Shift+6 move container to workspace 6:
+bindsym $mod+Shift+7 move container to workspace 7:
+bindsym $mod+Shift+8 move container to workspace 8:
+bindsym $mod+Shift+9 move container to workspace 9: Pass
 bindsym $mod+Shift+0 move container to workspace 10: video
+bindsym $mod+Shift+F1 move container to workspace F1:
+bindsym $mod+Shift+F2 move container to workspace F2:
+bindsym $mod+Shift+F3 move container to workspace F3:
+bindsym $mod+Shift+F4 move container to workspace F4:
+bindsym $mod+Shift+F5 move container to workspace F5:
+
+# ------------------------------------------------------------------------------
+#
+# KEYS EXEC APP
+#
+
+# shutdown/suspend button?
+bindsym $mod+Delete exec ~/.i3/bin/i3exit.py
+
+# reset xrandr displays
+bindsym $mod+F12 exec ~/.i3/bin/i3xrandr
+
+# screenshot key
+bindsym Print exec gnome-screenshot
+
+# control Volume with Volume Keys
+#bindsym $alt+Up exec "pactl set-sink-volume 1 -- +10%; notify-send 'Volume Up' ''"
+#bindsym $alt+Down exec "pactl set-sink-volume 1 -- -10%; notify-send 'Volume Down' ''"
+#bindsym $alt+Left exec "pactl set-sink-mute 1 -- toggle; notify-send 'Volume Toggle' ''"
+#bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 -- +10%; notify-send 'Volume' `~/.i3/volume-info.sh`"
+#bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -10%; notify-send 'Volume' `~/.i3/volume-info.sh`"
+#bindsym XF86AudioMute        exec "pactl set-sink-mute 0 -- toggle; notify-send 'Volume' `~/.i3/volume-info.sh`"
+bindsym XF86AudioMicMute     exec "pactl set-sink-mute 0 -- toggle; notify-send 'Volume' `~/.i3/volume-info.sh`"
+
+# start applications
+bindsym $mod+d exec --no-startup-id /opt/synapse/bin/synapse
+
+# run commands
+bindsym $alt+F2 exec --no-startup-id gmrun
+
+# lock
+#bindsym $alt+Control+l exec i3lock -ti ~/.local/share/wallpaper.png
+#bindsym $mod+l exec i3lock -ti ~/.local/share/wallpaper.png
+bindsym $alt+Control+l exec gnome-screensaver-command -l
+
+# ------------------------------------------------------------------------------
+#
+# RULES
+#
 
 # app specific settings
 assign [class="Firefox"] → 2: Firefox
 assign [class="Google-chrome-stable"] → 3: Chrome
-assign [class="Gitk"] → 5
-assign [class="Evolution"] → 6: Pidgin
-assign [class="Keepassx"] → 7: Pass
-assign [class="X2GoAgent"] → 8: X2Go
+assign [class="Gitk"] → 5:
+assign [class="Evolution"] → 6:
+assign [class="Keepassx"] → 9: Pass
+assign [class="X2GoAgent"] → 8:
 #assign [class="MPlayer"] → 10: video
-assign [class="Tomboy"] → 6: Pidgin
-assign [class="Pidgin"] → 6: Pidgin
+assign [class="Tomboy"] → 6:
+assign [class="Pidgin"] → 6:
 
 for_window [class="Gmrun" instance="gmrun"] floating enable
 for_window [class="X2goclient" instance="x2goclient"] floating enable
@@ -133,17 +225,6 @@ for_window [class="Nm-applet"] floating enable
 # press same key again to return to previous workspace
 workspace_auto_back_and_forth yes
 
-# move workspace to other monitor
-bindsym $mod+z move workspace to output left
-bindsym $mod+x move workspace to output right
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -163,61 +244,25 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-bindsym $mod+r mode "resize"
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-        status_command i3status -c ~/.i3/i3status.conf
-        colors {
-            background #232323
-            statusline #DCDCDC
-        }
-}
-
-# shutdown/suspend button?
-bindsym $mod+Delete exec ~/.i3/bin/i3exit.py
-
-# reset xrandr displays
-bindsym $mod+F12 exec ~/.i3/bin/i3xrandr
-
-# screenshot key
-bindsym Print exec gnome-screenshot
-
-# bind alt-grave (prev) and alt-tab (overview?) to something?
-# https://wiki.archlinux.org/index.php/i3#Quickly_jumping_to_open_window
-bindsym $alt+grave workspace prev
-bindsym $mod+grave workspace prev
-bindsym $alt+Tab workspace next
-bindsym $mod+Tab workspace next
-
-# control Volume with Volume Keys
-#bindsym $alt+Up exec "pactl set-sink-volume 1 -- +10%; notify-send 'Volume Up' ''"
-#bindsym $alt+Down exec "pactl set-sink-volume 1 -- -10%; notify-send 'Volume Down' ''"
-#bindsym $alt+Left exec "pactl set-sink-mute 1 -- toggle; notify-send 'Volume Toggle' ''"
-#bindsym XF86AudioRaiseVolume exec "pactl set-sink-volume 0 -- +10%; notify-send 'Volume' `~/.i3/volume-info.sh`"
-#bindsym XF86AudioLowerVolume exec "pactl set-sink-volume 0 -- -10%; notify-send 'Volume' `~/.i3/volume-info.sh`"
-#bindsym XF86AudioMute        exec "pactl set-sink-mute 0 -- toggle; notify-send 'Volume' `~/.i3/volume-info.sh`"
-bindsym XF86AudioMicMute     exec "pactl set-sink-mute 0 -- toggle; notify-send 'Volume' `~/.i3/volume-info.sh`"
+# ------------------------------------------------------------------------------
+#
+# STARTUP
+#
 
 # volume indicator / mousewheel
-exec --no-startup-id /opt/pa-applet/bin/pa-applet
+exec --no-startup-id ~/.i3/bin/pa-applet
+
+# notes
 exec --no-startup-id tomboy
+
+# xmpp
 exec --no-startup-id ~/.i3/bin/pidgin
 
-# set automatic locking
-#exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
+# start
+exec --no-startup-id /opt/synapse/bin/synapse -s
 
-# lock
-#bindsym $alt+Control+l exec i3lock -ti ~/.local/share/wallpaper.png
-#bindsym $mod+l exec i3lock -ti ~/.local/share/wallpaper.png
-bindsym $alt+Control+l exec gnome-screensaver-command -l
-
-# set background image
-exec_always --no-startup-id nitrogen --save --set-zoom-fill ~/.local/share/wallpaper.png
-
-# Network Manager
-#exec --no-startup-id nm-applet
+# compositing
+exec_always --no-startup-id xcompmgr
 
 # Touchpad disable, in absence of g-s
 exec_always --no-startup-id ~/.i3/bin/xinput-tp.sh
@@ -225,23 +270,28 @@ exec_always --no-startup-id ~/.i3/bin/xinput-tp.sh
 # Compose key, needs to be applied to every new keyboard
 exec_always --no-startup-id ~/.i3/bin/i3keymap
 
+# gnome
+# http://blog.seventhmoon.info/i3-tiled-window-manager/
+#exec echo ".i3/config: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
+exec gnome-session
+
+
+# ------------------------------------------------------------------------------
+#
+# END
+
+# Network Manager
+#exec --no-startup-id nm-applet
+
+# set automatic locking
+#exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
+
 # multiple displays save xrandr right-of state
 #exec_always --no-startup-id ~/.i3/bin/i3xrandr
 
 # notification-daemon
 #exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/notify-osd
 #exec_always --no-startup-id /usr/lib/notification-daemon/notification-daemon
-
-# start applications
-bindsym $mod+d exec --no-startup-id /opt/synapse/bin/synapse
-
-# run commands
-bindsym $alt+F2 exec --no-startup-id gmrun
-
-# gnome?
-# http://blog.seventhmoon.info/i3-tiled-window-manager/
-#exec echo ".i3/config: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
-exec gnome-session
 
 #
 # TODO gnome power? instead of bar
