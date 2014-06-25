@@ -9,7 +9,7 @@ import gtk
 import os
 import getpass
 
-class i3_exit:
+class actions:
     def disable_buttons(self):
         self.cancel.set_sensitive(False)
         self.logout.set_sensitive(False)
@@ -29,17 +29,15 @@ class i3_exit:
 
     def logout_action(self,btn):
         self.disable_buttons()
-        self.status.set_label("Exiting i3, please standby...")
+        self.status.set_label("Exiting, please standby...")
         os.system("i3-msg exit")
 
     def suspend_action(self,btn):
         self.disable_buttons()
         self.status.set_label("Suspending, please standby...")
-        os.system("i3lock -ti ~/.local/share/wallpaper.png")
-        os.system("dbus-send --system --print-reply \
-                --dest=\"org.freedesktop.UPower\"   \
-                /org/freedesktop/UPower             \
-                org.freedesktop.UPower.Suspend")
+        os.system("xrandr --output LVDS1 --auto --output DP2 --off --output HDMI3 --off")
+        os.system("gnome-screensaver-command -l")
+        os.system("sudo pm-suspend")
         gtk.main_quit()
 
     def reboot_action(self,btn):
@@ -139,5 +137,5 @@ def main():
     gtk.main()
 
 if __name__ == "__main__":
-    go = i3_exit()
+    go = actions()
     main()
