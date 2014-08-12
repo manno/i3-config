@@ -163,7 +163,7 @@ bindsym $mod+Shift+F5 move container to workspace F5:
 bindsym $mod+Delete exec ~/.i3/bin/i3exit.py
 
 # reset xrandr displays
-bindsym $mod+F12 exec ~/.i3/bin/i3xrandr
+bindsym $mod+p exec xrandr.py
 
 # screenshot key
 bindsym Print exec gnome-screenshot
@@ -287,9 +287,6 @@ exec gnome-session
 
 # set automatic locking
 #exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
-
-# multiple displays save xrandr right-of state
-#exec_always --no-startup-id ~/.i3/bin/i3xrandr
 
 # notification-daemon
 #exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/notify-osd
