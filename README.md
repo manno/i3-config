@@ -36,14 +36,6 @@ https://github.com/falconindy/ponymix
       
     git clone https://github.com/fernandotcl/pa-applet.git 
 
-### Gnome Keyring
-
-Add to `.profile`
-
-    eval `/usr/bin/gnome-keyring-daemon -s`
-    export SSH_AUTH_SOCK
-    export GPG_AGENT_INFO
-
 ### GTK Settings    
 
 .gtkrc-2.0
@@ -59,55 +51,9 @@ Add to `.profile`
     gtk-theme-name = Adwaita
     gtk-font-name = Sans 8
 
-### Lock screen on suspend
+### Gnome Keyring
 
-/etc/pm/sleep.d/99local-i3lock:
-
-    #!/bin/sh
-    #
-    # i3lock screen
-
-    umask 022;
-    PATH="$PATH:/usr/bin/X11"
-
-    getXuser() {
-      user=$(who | awk "/:$displaynum/ { print \$1; exit }")
-
-      if [ x"$user" = x"" ]; then
-        user=$(who | awk "/:$displaynum/ { print \$1; exit }")
-      fi
-      if [ x"$user" != x"" ]; then
-        userhome=`getent passwd $user | cut -d: -f6`
-        export XAUTHORITY=$userhome/.Xauthority
-        export username=$user
-      else
-        export XAUTHORITY=""
-      fi
-    }
-
-    getXconsole() {
-      console=`fgconsole`;
-      displaynum=`ps t tty$console | sed -n -re 's,.*/X .*:([0-9]+).*,\1,p'`
-      if [ x"$displaynum" != x"" ]; then
-        export DISPLAY=":$displaynum"
-        getXuser
-      fi
-    }
-
-
-    # from acpi scripts: /usr/share/acpi-support/power-funcs
-    getXconsole
-
-    case "${1}" in
-      suspend|hibernate)
-        logger -p info "Suspend Script: lock screen!"
-        if [ x"$username" != x"" ]; then
-          su $username -c '/usr/bin/i3lock -ti ~/.local/share/wallpaper.png'
-        fi
-      ;;
-
-      resume|thaw)
-      ;;
-    esac
-
-    exit 0
+    if [ -n "$PS1" ] && [ -z "$SSH_CONNECTION" ]; then
+      eval $(/usr/bin/gnome-keyring-daemon --start --components=gpg,secrets,ssh)
+      export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
+    fi
