@@ -204,22 +204,24 @@ assign [class="X2GoAgent"] → 8:
 assign [class="Tomboy"] → 6:
 assign [class="Pidgin"] → 6:
 
-for_window [class="Gmrun" instance="gmrun"] floating enable
-for_window [class="X2goclient" instance="x2goclient"] floating enable
-for_window [class="Meld"] fullscreen
-for_window [class="Gitk"] fullscreen
-for_window [class="Gitg"] fullscreen
-for_window [class="Spotify"] fullscreen
-for_window [class="MPlayer"] floating enable
-for_window [class="Tomboy"] floating enable
 for_window [class="Eog"] floating enable
 for_window [class="Evince"] floating enable
-for_window [class="TeamViewer.exe"] floating enable
-for_window [title="TeamViewer"] floating enable
-for_window [title="Steam - Update News"] floating enable
-for_window [class="Wine"] floating enable
-for_window [class="Signon-ui"] floating enable
+for_window [class="Gitg"] fullscreen
+for_window [class="Gitk"] fullscreen
+for_window [class="Gmrun" instance="gmrun"] floating enable
+for_window [class="MPlayer"] floating enable
+for_window [class="Meld"] fullscreen
 for_window [class="Nm-applet"] floating enable
+for_window [class="Signon-ui"] floating enable
+for_window [class="Spotify"] fullscreen
+for_window [class="Tomboy"] floating enable
+for_window [class="Wine"] floating enable
+for_window [class="X2goclient" instance="x2goclient"] floating enable
+for_window [title="Steam - Update News"] floating enable
+for_window [class="TeamViewer.exe"] floating enable
+for_window [title="TeamViewer Panel (minimized)"] floating enable, move absolute position 900 px 0 px
+for_window [title="TeamViewer Panel"] floating enable, move absolute position 900 px 0 px
+for_window [title="TeamViewer"] floating enable, move absolute position 0 px 0 px
 #for_window [class="Pidgin"] floating enable
 
 # press same key again to return to previous workspace
