@@ -273,39 +273,9 @@ exec_always --no-startup-id ~/.i3/bin/xinput-tp.sh
 exec_always --no-startup-id ~/.i3/bin/i3keymap
 
 # gnome
-# http://blog.seventhmoon.info/i3-tiled-window-manager/
-#exec echo ".i3/config: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
 exec gnome-session
 
 
 # ------------------------------------------------------------------------------
 #
 # END
-
-# Network Manager
-#exec --no-startup-id nm-applet
-
-# set automatic locking
-#exec xautolock -detectsleep -locker 'i3lock -ti ~/.local/share/wallpaper.png'
-
-# notification-daemon
-#exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/notify-osd
-#exec_always --no-startup-id /usr/lib/notification-daemon/notification-daemon
-
-#
-# TODO gnome power? instead of bar
-#
-# auto mounting / crypto - start nautilus instead
-#exec --no-startup-id /usr/lib/gnome-settings-daemon/gnome-fallback-mount-helper
-#
-# TODO calendar display?
-#
-# TODO tango colors?
-#client.focused          #3F8AC2 #096BAA #00BAA7 #00DA8E
-#client.focused_inactive #333333 #5F676A #ffffff #484e50
-#client.unfocused        #333333 #424242 #888888 #292d2e
-#client.urgent           #C10004 #900000 #ffffff #900000
-#
-# compmgr?
-#exec xcompmgr
-#
