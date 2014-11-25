@@ -264,7 +264,8 @@ exec --no-startup-id ~/.i3/bin/pidgin
 exec --no-startup-id /opt/synapse/bin/synapse -s
 
 # compositing
-exec_always --no-startup-id xcompmgr
+#exec_always --no-startup-id xcompmgr
+exec_always --no-startup-id ~/.i3/bin/compton start
 
 # Touchpad disable, in absence of g-s
 exec_always --no-startup-id ~/.i3/bin/xinput-tp.sh

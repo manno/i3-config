@@ -18,17 +18,29 @@ class actions:
 
     def xrandr_single_action(self,btn):
         self.status.set_label("running xrandr")
+        os.system("~/.i3/bin/compton stop")
         os.system("xrandr --fb 1366x768 --output HDMI2 --off --output HDMI3 --off --output DP2 --off   --output LVDS1 --auto")
+        os.system("~/.i3/bin/compton start")
+        os.system("awsetbg ~/.local/share/wallpaper.png")
         gtk.main_quit()
 
     def xrandr_work_action(self,btn):
         self.status.set_label("running xrandr")
+        os.system("~/.i3/bin/compton stop")
         os.system("xrandr --output LVDS1 --off --output DP2 --left-of HDMI3 --auto --output HDMI3 --auto")
+        os.system("~/.i3/bin/compton start")
+        os.system("awsetbg ~/.local/share/wallpaper.png")
         gtk.main_quit()
+
+    # def xrandr_work_action(self,btn):
+    #     self.status.set_label("running xrandr")
+    #     os.system("xrandr --output LVDS1 --off --output DP2 --left-of HDMI3 --auto --output HDMI3 --auto")
+    #     gtk.main_quit()
 
     def xrandr_home_action(self,btn):
         self.status.set_label("running xrandr")
         os.system("xrandr --output LVDS1 --off --output HDMI3 --auto --output HDMI2 --left-of HDMI3 --auto")
+        os.system("awsetbg ~/.local/share/wallpaper.png")
         gtk.main_quit()
 
     def add_button(self, title, action):
@@ -40,7 +52,7 @@ class actions:
 
     def create_window(self):
         self.window = gtk.Window()
-        title = "Log out " + getpass.getuser() + "? Choose an option:"
+        title = "Choose an option:"
         self.window.set_title(title)
         self.window.set_border_width(5)
         self.window.set_size_request(500, 80)
