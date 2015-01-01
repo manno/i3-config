@@ -4,9 +4,9 @@ Disclaimer.
 
 ## Installation
 
-    apt-get install i3 i3lock i3status \
+    apt-get install i3 i3status \
       libpulse-dev \
-      gmrun synapse notification-daemon 
+      gmrun notification-daemon 
 
 ### Synapse
 
