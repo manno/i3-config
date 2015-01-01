@@ -36,6 +36,10 @@ https://github.com/falconindy/ponymix
       
     git clone https://github.com/fernandotcl/pa-applet.git 
 
+### Gnome Session + Mouse Pointer    
+
+    dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+
 ### GTK Settings    
 
 .gtkrc-2.0
