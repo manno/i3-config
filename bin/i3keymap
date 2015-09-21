@@ -1,0 +1,4 @@
+setxkbmap -option
+setxkbmap -option ctrl:nocaps
+setxkbmap -option compose:caps
+setxkbmap -option compose:rctrl

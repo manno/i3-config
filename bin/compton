@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case "$1" in
+  start) 
+    /usr/bin/compton -b #--backend glx --vsync opengl-swc  
+    ;;
+  stop)
+    killall compton
+    ;;
+esac
+
