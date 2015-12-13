@@ -35,7 +35,8 @@ class actions:
     def suspend_action(self,btn):
         self.disable_buttons()
         self.status.set_label("Suspending, please standby...")
-        os.system("xrandr --output LVDS1 --auto --output DP2 --off --output HDMI3 --off")
+        #os.system("killall compton")
+        #os.system("xrandr --output LVDS1 --auto --output DP2 --off --output HDMI3 --off")
         os.system("gnome-screensaver-command -l")
         os.system("sudo pm-suspend")
         gtk.main_quit()
