@@ -16,7 +16,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font -misc-fixed-medium-r-normal--9-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
 # clear in small sizes. However, if you need a lot of unicode glyphs or
 # right-to-left text rendering, you should instead use pango for rendering and
@@ -55,7 +55,7 @@ floating_modifier $mod
 bindsym $mod+t exec i3-sensible-terminal
 
 # kill focused window
-#bindsym $mod+Shift+q kill
+bindsym $mod+Shift+q kill
 
 # change focus
 bindsym $mod+Left focus left
@@ -197,21 +197,26 @@ bindsym $alt+Control+l exec gnome-screensaver-command -l
 assign [class="Firefox"] → 2: Firefox
 assign [class="Google-chrome-stable"] → 3: Chrome
 assign [class="Gitk"] → 5:
+assign [class="Screenkey"] → 6:
 assign [class="Evolution"] → 6:
 assign [class="Keepassx"] → 9: Pass
 assign [class="X2GoAgent"] → 8:
 #assign [class="MPlayer"] → 10: video
+assign [class="mpv"] → 10: video
 assign [class="Tomboy"] → 6:
 assign [class="Pidgin"] → 6:
+assign [class="sun-awt-X11-XFramePeer"] → 6:
+assign [title="Java iKVM Viewer"] → 6:
 
 for_window [class="Eog"] floating enable
 for_window [class="Evince"] floating enable
 for_window [class="Gitg"] fullscreen
-for_window [class="Gitk"] fullscreen
+#for_window [class="Gitk"] fullscreen
 for_window [class="Gmrun" instance="gmrun"] floating enable
 for_window [class="MPlayer"] floating enable
 for_window [class="Meld"] fullscreen
 for_window [class="Nm-applet"] floating enable
+for_window [class="sun-awt-X11-XFramePeer"] floating disable
 for_window [class="Signon-ui"] floating enable
 for_window [class="Spotify"] fullscreen
 for_window [class="Tomboy"] floating enable
@@ -258,14 +263,14 @@ exec --no-startup-id ~/.i3/bin/pa-applet
 exec --no-startup-id tomboy
 
 # xmpp
-exec --no-startup-id ~/.i3/bin/pidgin
+#exec --no-startup-id ~/.i3/bin/pidgin
 
 # start
 exec --no-startup-id /opt/synapse/bin/synapse -s
 
 # compositing
 #exec_always --no-startup-id xcompmgr
-exec_always --no-startup-id ~/.i3/bin/compton start
+#exec_always --no-startup-id ~/.i3/bin/compton start
 
 # Touchpad disable, in absence of g-s
 exec_always --no-startup-id ~/.i3/bin/xinput-tp.sh
@@ -275,7 +280,12 @@ exec_always --no-startup-id ~/.i3/bin/i3keymap
 
 # gnome
 exec gnome-session
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/bin/caffeine-plus
 
+# clipboard
+exec --no-startup-id autocutsel
+exec --no-startup-id autocutsel -s PRIMARY
 
 # ------------------------------------------------------------------------------
 #
