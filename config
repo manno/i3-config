@@ -184,7 +184,7 @@ bindsym $mod+Tab workspace next
 bindsym $mod+Delete exec ~/.config/i3/bin/i3exit.py
 
 # reset xrandr displays
-bindsym $mod+p exec xrandr.py
+bindsym $mod+p exec ~/.config/i3/bin/xrandr.py
 
 # screenshot key
 bindsym Print exec gnome-screenshot
@@ -260,7 +260,7 @@ exec_always --no-startup-id ~/.config/i3/bin/compton start
 exec_always --no-startup-id ~/.config/i3/bin/xinput-tp.sh
 
 # Compose key, needs to be applied to every new keyboard
-exec_always --no-startup-id ~/.config/i3/bin/i3keymap
+exec_always --no-startup-id ~/.config/i3/bin/keymap
 
 # gnome
 exec_always --no-startup-id /usr/lib/x86_64-linux-gnu/notify-osd
