@@ -243,7 +243,7 @@ exec --no-startup-id ~/.config/i3/bin/pa-applet
 exec --no-startup-id tomboy
 
 # gnome
-exec --no-startup-id /usr/bin/caffeine-plus
+#exec --no-startup-id /usr/bin/caffeine-plus
 
 # clipboard
 exec --no-startup-id /usr/bin/autocutsel
