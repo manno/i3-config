@@ -28,8 +28,6 @@ class actions:
         os.system("xrandr --output LVDS1 --off --output DP2 --left-of HDMI3 --auto --output HDMI3 --mode 1680x1050")
         os.system("~/.config/i3/bin/compton reset")
         os.system("~/.config/i3/awsetbg ~/.local/share/wallpaper.png")
-        #os.system("i3-msg 'output HDMI3; append_layout ~/.i3/layouts/work-HDMI3'");
-        #os.system("i3-msg 'output DP2; append_layout ~/.i3/layouts/work-DP2'");
         gtk.main_quit()
 
     def xrandr_home_action(self,btn):
@@ -98,7 +96,7 @@ class actions:
     def __init__(self):
         self.actions = []
         self.create_window()
-        os.system("~/.i3/bin/keymap")
+        os.system("~/.config/i3/bin/keymap")
 
 
 def main():
