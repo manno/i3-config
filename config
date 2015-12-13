@@ -250,7 +250,7 @@ exec --no-startup-id /usr/bin/autocutsel
 exec --no-startup-id /usr/bin/autocutsel -s PRIMARY
 
 # xmpp
-#exec --no-startup-id ~/.config/i3/bin/pidgin
+exec --no-startup-id ~/.config/i3/bin/pidgin
 
 # start programs
 exec --no-startup-id /opt/synapse/bin/synapse -s
