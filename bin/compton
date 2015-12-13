@@ -1,11 +1,28 @@
 #!/bin/sh
+# Description: handle screen resolution change
 
 case "$1" in
+  intel) 
+    /usr/bin/compton -b
+    awsetbg -a -r ~/.local/share/wallpaper.png
+    ;;
   start) 
-    /usr/bin/compton -b # --backend glx --vsync opengl-swc  
+    # i965
+    #/usr/bin/compton -b --backend glx --vsync opengl-swc  
+    /usr/bin/compton -b --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible
+    #/usr/bin/compton -b --backend xrender --unredir-if-possible
+
+    # Resolution
+    awsetbg -a -r ~/.local/share/wallpaper.png
+    #f=$(find ~/.local/share/wallpaper.png/ -type f | shuf -n1)
+    #fvwm-root "$f" 
+
     ;;
   stop)
     killall compton
+    awsetbg -a -r ~/.local/share/wallpaper.png
     ;;
 esac
+
+exit 0
 
