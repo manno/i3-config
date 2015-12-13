@@ -88,3 +88,8 @@ Expected at `~/.local/share/wallpaper.png`.
       Option  "XkbOptions"  "ctrl:nocaps,compose:caps,compose:rctrl,terminate:ctrl_alt_bksp"
     EndSection
 
+### Suspend
+
+/etc/pm/sleep.d/99local
+
+    service network-manager restart
