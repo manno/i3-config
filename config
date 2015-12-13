@@ -222,7 +222,6 @@ for_window [class="Meld"] fullscreen
 for_window [class="Nm-applet"] floating enable
 for_window [class="Screenkey"] floating enable
 for_window [class="Signon-ui"] floating enable
-for_window [class="Spotify"] fullscreen
 for_window [class="Tomboy"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="X2goclient" instance="x2goclient"] floating enable

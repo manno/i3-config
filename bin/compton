@@ -2,10 +2,22 @@
 
 case "$1" in
   start) 
-    /usr/bin/compton -b #--backend glx --vsync opengl-swc  
+    /usr/bin/compton -b --dbus #--backend glx --vsync opengl-swc  
     ;;
   stop)
     killall compton
     ;;
-esac
+  reset)
+    dpy=$(echo -n "$DISPLAY" | tr -c '[:alnum:]' _)
 
+    if [ -z "$dpy" ]; then
+      echo "Cannot find display."
+      exit 1
+    fi
+
+    service="com.github.chjj.compton.${dpy}"
+    interface='com.github.chjj.compton'
+    object='/com/github/chjj/compton'
+    dbus-send --print-reply --dest="$service" "$object" "${interface}.reset"
+    ;;
+esac
