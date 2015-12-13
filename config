@@ -246,8 +246,8 @@ exec --no-startup-id tomboy
 exec --no-startup-id /usr/bin/caffeine-plus
 
 # clipboard
-exec --no-startup-id autocutsel
-exec --no-startup-id autocutsel -s PRIMARY
+exec --no-startup-id /usr/bin/autocutsel
+exec --no-startup-id /usr/bin/autocutsel -s PRIMARY
 
 # xmpp
 #exec --no-startup-id ~/.config/i3/bin/pidgin
@@ -256,7 +256,7 @@ exec --no-startup-id autocutsel -s PRIMARY
 exec --no-startup-id /opt/synapse/bin/synapse -s
 
 # network manager
-exec --no-startup-id nm-applet
+exec --no-startup-id /usr/bin/nm-applet
 
 # compositing
 exec_always --no-startup-id ~/.config/i3/bin/compton start
