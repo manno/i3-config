@@ -18,21 +18,14 @@ class actions:
 
     def xrandr_single_action(self,btn):
         self.status.set_label("running xrandr")
-        os.system("xrandr --fb 1366x768 --output HDMI2 --off --output HDMI3 --off --output DP2 --off   --output LVDS1 --auto")
-        os.system("~/.config/i3/bin/compton reset")
-        os.system("~/.config/i3/bin/awsetbg ~/.local/share/wallpaper.png")
-        gtk.main_quit()
-
-    def xrandr_work_action(self,btn):
-        self.status.set_label("running xrandr")
-        os.system("xrandr --output LVDS1 --off --output DP2 --left-of HDMI3 --auto --output HDMI3 --mode 1680x1050")
+        os.system("xrandr --fb 1600x900 --output VGA1 --off --output HDMI3 --off --output DP-2 --off --output LVDS1 --auto")
         os.system("~/.config/i3/bin/compton reset")
         os.system("~/.config/i3/bin/awsetbg ~/.local/share/wallpaper.png")
         gtk.main_quit()
 
     def xrandr_home_action(self,btn):
         self.status.set_label("running xrandr")
-        os.system("xrandr --output LVDS1 --off --output HDMI3 --auto --output HDMI2 --left-of HDMI3 --auto")
+        os.system("xrandr --output LVDS1 --auto --output HDMI3 --auto --left-of LVDS1")
         os.system("~/.config/i3/bin/compton reset")
         os.system("~/.config/i3/bin/awsetbg ~/.local/share/wallpaper.png")
         gtk.main_quit()
@@ -64,7 +57,6 @@ class actions:
         
         # Actions
         self.add_button("_Single", self.xrandr_single_action)
-        self.add_button("_Work", self.xrandr_work_action)
         self.add_button("_Home", self.xrandr_home_action)
 
         #Cancel button
