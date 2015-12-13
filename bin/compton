@@ -1,28 +1,22 @@
 #!/bin/sh
-# Description: handle screen resolution change
-
 case "$1" in
-  intel) 
-    /usr/bin/compton -b
-    awsetbg -a -r ~/.local/share/wallpaper.png
-    ;;
   start) 
-    # i965
-    #/usr/bin/compton -b --backend glx --vsync opengl-swc  
-    /usr/bin/compton -b --backend glx --paint-on-overlay --glx-no-stencil --vsync opengl-swc --unredir-if-possible
-    #/usr/bin/compton -b --backend xrender --unredir-if-possible
-
-    # Resolution
-    awsetbg -a -r ~/.local/share/wallpaper.png
-    #f=$(find ~/.local/share/wallpaper.png/ -type f | shuf -n1)
-    #fvwm-root "$f" 
-
+    /usr/bin/compton -b --dbus
     ;;
   stop)
     killall compton
-    awsetbg -a -r ~/.local/share/wallpaper.png
+    ;;
+  reset)
+    dpy=$(echo -n "$DISPLAY" | tr -c '[:alnum:]' _)
+
+    if [ -z "$dpy" ]; then
+      echo "Cannot find display."
+      exit 1
+    fi
+
+    service="com.github.chjj.compton.${dpy}"
+    interface='com.github.chjj.compton'
+    object='/com/github/chjj/compton'
+    dbus-send --print-reply --dest="$service" "$object" "${interface}.reset"
     ;;
 esac
-
-exit 0
-
