@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/xrandr --fb 1600x900 --output VGA1 --off --output HDMI3 --off --output DP-2 --off --output LVDS1 --auto --primary

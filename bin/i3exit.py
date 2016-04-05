@@ -35,26 +35,28 @@ class actions:
     def suspend_action(self,btn):
         self.disable_buttons()
         self.status.set_label("Suspending, please standby...")
-        os.system("xrandr --output LVDS1 --auto --output DP2 --off --output HDMI3 --off")
         os.system("gnome-screensaver-command -l")
-        os.system("sudo pm-suspend")
+        os.system("systemctl suspend")
+        #os.system("sudo pm-suspend")
         gtk.main_quit()
 
     def reboot_action(self,btn):
         self.disable_buttons()
         self.status.set_label("Rebooting, please standby...")
-        os.system("dbus-send --system --print-reply   \
-                --dest=\"org.freedesktop.ConsoleKit\" \
-                /org/freedesktop/ConsoleKit/Manager   \
-                org.freedesktop.ConsoleKit.Manager.Restart")
+        os.system("systemctl reboot")
+        # os.system("dbus-send --system --print-reply   \
+        #         --dest=\"org.freedesktop.ConsoleKit\" \
+        #         /org/freedesktop/ConsoleKit/Manager   \
+        #         org.freedesktop.ConsoleKit.Manager.Restart")
 
     def shutdown_action(self,btn):
         self.disable_buttons()
         self.status.set_label("Shutting down, please standby...")
-        os.system("dbus-send --system --print-reply   \
-                --dest=\"org.freedesktop.ConsoleKit\" \
-                /org/freedesktop/ConsoleKit/Manager   \
-                org.freedesktop.ConsoleKit.Manager.Stop")
+        os.system("systemctl poweroff")
+        # os.system("dbus-send --system --print-reply   \
+        #         --dest=\"org.freedesktop.ConsoleKit\" \
+        #         /org/freedesktop/ConsoleKit/Manager   \
+        #         org.freedesktop.ConsoleKit.Manager.Stop")
 
     def create_window(self):
         self.window = gtk.Window()
