@@ -76,6 +76,13 @@ Expected at `~/.local/share/wallpaper.png`.
       export GNOME_KEYRING_CONTROL GNOME_KEYRING_PID GPG_AGENT_INFO SSH_AUTH_SOCK
     fi
 
+### Default Browser
+
+    xdg-mime default firefox-trunk.desktop text/html
+    xdg-mime default firefox-trunk.desktop x-scheme-handler/http
+    xdg-mime default firefox-trunk.desktop x-scheme-handler/https
+    xdg-mime default firefox-trunk.desktop x-scheme-handler/about
+
 ### Keyboard
 
 /etc/X11/xorg.conf
