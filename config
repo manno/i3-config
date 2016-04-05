@@ -273,6 +273,9 @@ exec_always --no-startup-id ~/.config/i3/bin/compton start
 # Touchpad disable, in absence of g-s
 exec_always --no-startup-id ~/.config/i3/bin/xinput-tp.sh
 
+# Docking station
+exec --no-startup-id ~/.config/i3/bin/docking_station.sh
+
 # Compose key, needs to be applied to every new keyboard
 exec_always --no-startup-id ~/.config/i3/bin/keymap
 
