@@ -156,7 +156,7 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status -c ~/.config/i3/i3status.conf | ~/.config/i3/bin/i3status.py
+        status_command i3status -c ~/.config/i3/i3status.conf # | python2.7 ~/.config/i3/bin/i3status.py
         tray_output primary
         colors {
             background #232323
@@ -183,10 +183,10 @@ bindsym $mod+Tab workspace next
 #
 
 # shutdown/suspend button?
-bindsym $mod+Delete exec ~/.config/i3/bin/i3exit.py
+bindsym $mod+Delete exec python2.7 ~/.config/i3/bin/i3exit.py
 
 # reset xrandr displays
-bindsym $mod+p exec ~/.config/i3/bin/xrandr.py
+bindsym $mod+p exec python2.7 ~/.config/i3/bin/xrandr.py
 
 # screenshot key
 bindsym Print exec gnome-screenshot
@@ -251,7 +251,8 @@ exec --no-startup-id ~/.config/i3/bin/pa-applet
 exec --no-startup-id tomboy
 
 # gnome
-exec --no-startup-id /usr/bin/caffeine-plus
+exec --no-startup-id /usr/bin/caffeine
+exec --no-startup-id /sbin/gnome-screensaver
 
 # clipboard
 exec --no-startup-id /usr/bin/autocutsel
@@ -261,7 +262,7 @@ exec --no-startup-id /usr/bin/autocutsel -s PRIMARY
 #exec --no-startup-id ~/.config/i3/bin/pidgin
 
 # start programs
-exec --no-startup-id /opt/synapse/bin/synapse -s
+exec --no-startup-id /sbin/synapse -s
 
 # network manager
 exec --no-startup-id /usr/bin/nm-applet

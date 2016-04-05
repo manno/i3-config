@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2.7
 
 # based on jonyamo / i3-exit
 # based on cb-exit used in CrunchBang Linux <http://crunchbanglinux.org/>
