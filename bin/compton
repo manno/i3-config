@@ -1,12 +1,24 @@
-#!/bin/sh
+#!/bin/zsh
+COMPTON=/sbin/compton
+set +e
+
+
 case "$1" in
   start) 
-    /usr/bin/compton -b --dbus
+    $COMPTON -b --dbus
     ;;
   stop)
-    killall compton
+    pkill -u $USER -f $COMPTON
     ;;
-  reset)
+  reset|restart)
+    pkill -u $USER -f $COMPTON
+    $COMPTON -b --dbus
+    ;;
+
+  status)
+    pidof $COMPTON
+    ;;
+  reload)
     dpy=$(echo -n "$DISPLAY" | tr -c '[:alnum:]' _)
 
     if [ -z "$dpy" ]; then
@@ -20,3 +32,5 @@ case "$1" in
     dbus-send --print-reply --dest="$service" "$object" "${interface}.reset"
     ;;
 esac
+
+exit 0
