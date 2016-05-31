@@ -36,7 +36,7 @@ client.urgent           #ff00ff #ff00ff #ffffff #bcbcbc
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+t exec i3-sensible-terminal
+bindsym $mod+Return exec konsole
 #bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
@@ -195,6 +195,7 @@ bindsym Print exec gnome-screenshot
 bindsym XF86AudioMicMute     exec "pactl set-sink-mute 0 -- toggle; notify-send 'Volume' `~/.config/i3/bin/volume-info.sh`"
 
 # screen lock
+#bindsym $alt+Control+l exec xscreensaver-command -lock
 bindsym $alt+Control+l exec gnome-screensaver-command -l
 
 # ------------------------------------------------------------------------------
@@ -220,11 +221,10 @@ assign [title="Java iKVM Viewer"] → 6:
 
 #for_window [class="Gitk"] fullscreen
 for_window [class="Eog"] floating enable
-for_window [class="Evince"] floating enable
+#for_window [class="Evince"] floating enable
 for_window [class="Gitg"] fullscreen
 for_window [class="Gmrun" instance="gmrun"] floating enable
 for_window [class="MPlayer"] floating enable
-for_window [class="Meld"] fullscreen
 for_window [class="Nm-applet"] floating enable
 for_window [class="Screenkey"] floating enable
 for_window [class="Signon-ui"] floating enable
@@ -245,13 +245,15 @@ for_window [title="TeamViewer"] floating enable, move absolute position 0 px 0 p
 #
 
 # volume indicator / mousewheel
-exec --no-startup-id ~/.config/i3/bin/pa-applet
+#exec --no-startup-id ~/.config/i3/bin/pa-applet
+exec --no-startup-id /usr/bin/pasystray
 
 # notes
 exec --no-startup-id tomboy
 
 # gnome
 exec --no-startup-id /usr/bin/caffeine
+#exec --no-startup-id /sbin/xscreensaver -no-splash
 exec --no-startup-id /sbin/gnome-screensaver
 
 # clipboard
