@@ -1,5 +1,0 @@
-#!/bin/sh
-
-if ! pidof pa-applet > /dev/null; then
-  /opt/pa-applet/bin/pa-applet
-fi
