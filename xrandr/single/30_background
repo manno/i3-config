@@ -1,2 +1,2 @@
 #!/bin/sh
-~/.config/i3/bin/awsetbg ~/.local/share/wallpaper.png
+~/.config/i3/bin/awsetbg ~/.config/i3/wallpaper.png

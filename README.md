@@ -4,37 +4,15 @@ Disclaimer.
 
 ## Installation
 
-    apt-get install i3-wm i3status \
-      compton caffeine-plus autocutsel network-manager-gnome notify-osd \
-
-### Synapse
-
-    apt-get install apt-get install libgee-0.8-dev libunique-3.0-dev libkeybinder-3.0-dev libjson-glib-dev libgee-dev libzeitgeist-dev valac
-
-### Volume Control
-
-#### pactl
-
-    apt-get install pulseaudio-utils
-
-#### pa-applet
-
-    apt-get install libglib2.0-dev libgtk-3-dev \
-      libnotify-dev libpulse-dev libx11-dev \
-      libpulse-dev \
-      autoconf automake pkg-config
-
-    git clone https://github.com/fernandotcl/pa-applet.git
+    pacaur -S i3-wm i3status feh xorg-xwininfo autocutsel pasystray \
+      i3-lock caffeine-ng network-manager-gnome notify-osd \
+      pavucontrol gnome-screensaver konsole
 
 ## Configuration
 
 ### Wallpaper
 
-Expected at `~/.local/share/wallpaper.png`.
-
-### Gnome Session + Mouse Pointer
-
-    dconf write /org/gnome/settings-daemon/plugins/cursor/active false
+Expected at `~/.config/i3/wallpaper.png`.
 
 ### GTK Settings
 
@@ -50,24 +28,6 @@ Expected at `~/.local/share/wallpaper.png`.
     gtk-application-prefer-dark-theme=0
     gtk-theme-name = Adwaita
     gtk-font-name = Sans 8
-
-.config/gtk-3.0/gtks.css
-
-    TerminalWindow {
-      border: 0;
-      padding: 0;
-      margin: 0;
-    }
-
-    TerminalWindow .notebook {
-      border: 0;
-      padding: 0;
-      font-size: small;
-    }
-
-    TerminalScreen {
-      -VteTerminal-inner-border: 0;
-    }
 
 ### Gnome Keyring
 
@@ -94,9 +54,3 @@ Expected at `~/.local/share/wallpaper.png`.
       Driver "evdev"
       Option  "XkbOptions"  "ctrl:nocaps,compose:caps,compose:rctrl,terminate:ctrl_alt_bksp"
     EndSection
-
-### Suspend
-
-/etc/pm/sleep.d/99local
-
-    service network-manager restart

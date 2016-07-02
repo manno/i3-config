@@ -1,0 +1,2 @@
+#!/bin/sh
+~/.config/i3/bin/compton reset

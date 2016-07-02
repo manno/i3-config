@@ -21,6 +21,11 @@ class actions:
         os.system("run-parts ~/.config/i3/xrandr/single")
         gtk.main_quit()
 
+    def xrandr_external_action(self,btn):
+        self.status.set_label("running xrandr")
+        os.system("run-parts ~/.config/i3/xrandr/home1")
+        gtk.main_quit()
+
     def xrandr_home_action(self,btn):
         self.status.set_label("running xrandr")
         os.system("run-parts ~/.config/i3/xrandr/home")
@@ -53,7 +58,8 @@ class actions:
         
         # Actions
         self.add_button("_Single", self.xrandr_single_action)
-        self.add_button("_Home", self.xrandr_home_action)
+        self.add_button("_Home 1", self.xrandr_external_action)
+        self.add_button("_Home 2", self.xrandr_home_action)
 
         #Cancel button
         self.cancel = gtk.Button(stock = gtk.STOCK_CANCEL)

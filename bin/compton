@@ -1,6 +1,7 @@
 #!/bin/zsh
 COMPTON=/sbin/compton
 set +e
+exit 0
 
 
 case "$1" in
